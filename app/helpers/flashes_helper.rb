@@ -1,4 +1,4 @@
-module FlashersHelper
+module FlashesHelper
   FLASH_CLASSES = { alert: "danger", notice: "sueesess", warning: "warning"}.
 freeze
 
