@@ -27,6 +27,9 @@ end
 		@group.user = current_user
 
 		if @group.save
+
+			current_user.join!(@group)
+			
 			redirect_to groups_path
 		else
 			render :new
@@ -53,7 +56,9 @@ def join
 
 	if !current_user.is_member_of?(@group)
 		current_user.join!(@group)
-		flash[:notice] = "加入本讨论版成员了！"
+		flash[:notice] = "加入本讨论版成功了！"
+	else
+		flash[:warning] = "你已经是本讨论版成员了"
 	end
 
 	redirect_to group_path(@group)
